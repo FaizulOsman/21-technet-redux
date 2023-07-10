@@ -10,13 +10,14 @@ import {
 } from '@/redux/features/products/productSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { IProduct } from '@/types/globalTypes';
+import { useEffect, useState } from 'react';
 
 export default function Products() {
-  const { data, isLoading } = useGetProductsQuery(undefined);
+  const { data, isLoading, error } = useGetProductsQuery(undefined);
 
   const { toast } = useToast();
 
-  const { status, priceRange } = useAppSelector((state) => state.product);
+  const { priceRange, status } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
 
   const handleSlider = (value: number[]) => {

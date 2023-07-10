@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   Sheet,
   SheetContent,
@@ -13,6 +12,7 @@ import {
   HiOutlineTrash,
 } from 'react-icons/hi';
 import { Button } from './ui/button';
+import { IProduct } from '@/types/globalTypes';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import {
   addToCart,
@@ -61,9 +61,9 @@ export default function Cart() {
                   <HiMinus size="20" />
                 </Button>
                 <Button
+                  onClick={() => dispatch(removeFromCart(product))}
                   variant="destructive"
                   className="bg-red-500 hover:bg-red-400"
-                  onClick={() => dispatch(removeFromCart(product))}
                 >
                   <HiOutlineTrash size="20" />
                 </Button>
